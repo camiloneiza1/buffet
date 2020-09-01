@@ -1,9 +1,12 @@
 package co.edu.ucentral.buffet.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,40 +19,81 @@ public class Platos {
 	private String descripcion;
 	private String precio;
 	private Double foto;
+
+	@OneToMany (mappedBy = "platos")
+	private List<detPedidos> dPedidos;
+
+	@OneToMany (mappedBy = "platos")
+	private List<detPlatos> dPlatos;
+	
+
 	public Integer getIdPlatos() {
-		return idPlatos;
+		return this.idPlatos;
 	}
+
 	public void setIdPlatos(Integer idPlatos) {
 		this.idPlatos = idPlatos;
 	}
+
 	public String getNombre() {
-		return nombre;
+		return this.nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public String getDescripcion() {
-		return descripcion;
+		return this.descripcion;
 	}
+
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
 	public String getPrecio() {
-		return precio;
+		return this.precio;
 	}
+
 	public void setPrecio(String precio) {
 		this.precio = precio;
 	}
+
 	public Double getFoto() {
-		return foto;
+		return this.foto;
 	}
+
 	public void setFoto(Double foto) {
 		this.foto = foto;
 	}
-	@Override
-	public String toString() {
-		return "Platos [idPlatos=" + idPlatos + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio="
-				+ precio + ", foto=" + foto + "]";
+
+	public List<detPedidos> getDPedidos() {
+		return this.dPedidos;
 	}
 
+	public void setDPedidos(List<detPedidos> dPedidos) {
+		this.dPedidos = dPedidos;
+	}
+
+	public List<detPlatos> getDPlatos() {
+		return this.dPlatos;
+	}
+
+	public void setDPlatos(List<detPlatos> dPlatos) {
+		this.dPlatos = dPlatos;
+	}
+
+	@Override
+	public String toString() {
+		return "{" +
+			" idPlatos='" + getIdPlatos() + "'" +
+			", nombre='" + getNombre() + "'" +
+			", descripcion='" + getDescripcion() + "'" +
+			", precio='" + getPrecio() + "'" +
+			", foto='" + getFoto() + "'" +
+			", dPedidos='" + getDPedidos() + "'" +
+			", dPlatos='" + getDPlatos() + "'" +
+			"}";
+	}
+	
 }

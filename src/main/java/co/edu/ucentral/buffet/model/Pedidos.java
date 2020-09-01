@@ -1,12 +1,17 @@
 package co.edu.ucentral.buffet.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name="pedidos")
@@ -26,90 +31,153 @@ public class Pedidos {
 	private double valorPlatos;
 	private double valorAdicionales;
 	private double valorTotal;
+
+	@ManyToOne
+    @JoinColumn (name = "idClientes")
+	private Clientes clientes;
+
+	@OneToMany (mappedBy = "pedidos")
+    private List<PedidosHasComidas> pedidosHasComidas; 
+	
+
 	public Integer getIdPedidos() {
-		return idPedidos;
+		return this.idPedidos;
 	}
+
 	public void setIdPedidos(Integer idPedidos) {
 		this.idPedidos = idPedidos;
 	}
+
 	public Integer getIdClientes() {
-		return idClientes;
+		return this.idClientes;
 	}
+
 	public void setIdClientes(Integer idClientes) {
 		this.idClientes = idClientes;
 	}
+
 	public String getDireccion() {
-		return direccion;
+		return this.direccion;
 	}
+
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
+
 	public String getTelefono() {
-		return telefono;
+		return this.telefono;
 	}
+
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+
 	public String getFormaPago() {
-		return formaPago;
+		return this.formaPago;
 	}
+
 	public void setFormaPago(String formaPago) {
 		this.formaPago = formaPago;
 	}
+
 	public Date getFechaSolicitud() {
-		return fechaSolicitud;
+		return this.fechaSolicitud;
 	}
+
 	public void setFechaSolicitud(Date fechaSolicitud) {
 		this.fechaSolicitud = fechaSolicitud;
 	}
+
 	public Date getFechaEntrega() {
-		return fechaEntrega;
+		return this.fechaEntrega;
 	}
+
 	public void setFechaEntrega(Date fechaEntrega) {
 		this.fechaEntrega = fechaEntrega;
 	}
+
 	public String getEstado() {
-		return estado;
+		return this.estado;
 	}
+
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+
 	public String getObservaciones() {
-		return observaciones;
+		return this.observaciones;
 	}
+
 	public void setObservaciones(String observaciones) {
 		this.observaciones = observaciones;
 	}
+
 	public double getValorDomicilio() {
-		return valorDomicilio;
+		return this.valorDomicilio;
 	}
+
 	public void setValorDomicilio(double valorDomicilio) {
 		this.valorDomicilio = valorDomicilio;
 	}
+
 	public double getValorPlatos() {
-		return valorPlatos;
+		return this.valorPlatos;
 	}
+
 	public void setValorPlatos(double valorPlatos) {
 		this.valorPlatos = valorPlatos;
 	}
+
 	public double getValorAdicionales() {
-		return valorAdicionales;
+		return this.valorAdicionales;
 	}
+
 	public void setValorAdicionales(double valorAdicionales) {
 		this.valorAdicionales = valorAdicionales;
 	}
+
 	public double getValorTotal() {
-		return valorTotal;
+		return this.valorTotal;
 	}
+
 	public void setValorTotal(double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
+
+	public Clientes getClientes() {
+		return this.clientes;
+	}
+
+	public void setClientes(Clientes clientes) {
+		this.clientes = clientes;
+	}
+
+	public List<PedidosHasComidas> getPedidosHasComidas() {
+		return this.pedidosHasComidas;
+	}
+
+	public void setPedidosHasComidas(List<PedidosHasComidas> pedidosHasComidas) {
+		this.pedidosHasComidas = pedidosHasComidas;
+	}
+
 	@Override
 	public String toString() {
-		return "Pedidos [idPedidos=" + idPedidos + ", idClientes=" + idClientes + ", direccion=" + direccion
-				+ ", telefono=" + telefono + ", formaPago=" + formaPago + ", fechaSolicitud=" + fechaSolicitud
-				+ ", fechaEntrega=" + fechaEntrega + ", estado=" + estado + ", observaciones=" + observaciones
-				+ ", valorDomicilio=" + valorDomicilio + ", valorPlatos=" + valorPlatos + ", valorAdicionales="
-				+ valorAdicionales + ", valorTotal=" + valorTotal + "]";
+		return "{" +
+			" idPedidos='" + getIdPedidos() + "'" +
+			", idClientes='" + getIdClientes() + "'" +
+			", direccion='" + getDireccion() + "'" +
+			", telefono='" + getTelefono() + "'" +
+			", formaPago='" + getFormaPago() + "'" +
+			", fechaSolicitud='" + getFechaSolicitud() + "'" +
+			", fechaEntrega='" + getFechaEntrega() + "'" +
+			", estado='" + getEstado() + "'" +
+			", observaciones='" + getObservaciones() + "'" +
+			", valorDomicilio='" + getValorDomicilio() + "'" +
+			", valorPlatos='" + getValorPlatos() + "'" +
+			", valorAdicionales='" + getValorAdicionales() + "'" +
+			", valorTotal='" + getValorTotal() + "'" +
+			", clientes='" + getClientes() + "'" +
+			", pedidosHasComidas='" + getPedidosHasComidas() + "'" +
+			"}";
 	}
 }

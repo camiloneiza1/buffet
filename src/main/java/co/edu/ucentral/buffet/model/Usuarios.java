@@ -1,9 +1,12 @@
 package co.edu.ucentral.buffet.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,39 +19,69 @@ public class Usuarios {
 	private String usuario;
 	private String clave;
 	private Integer rol;
+
+	@OneToMany (mappedBy = "usuarios")
+	private List<Clientes> clientes;
+
 	public Integer getIdUsuarios() {
-		return idUsuarios;
+		return this.idUsuarios;
 	}
+
 	public void setIdUsuarios(Integer idUsuarios) {
 		this.idUsuarios = idUsuarios;
 	}
+
 	public String getNombre() {
-		return nombre;
+		return this.nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public String getUsuario() {
-		return usuario;
+		return this.usuario;
 	}
+
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
+
 	public String getClave() {
-		return clave;
+		return this.clave;
 	}
+
 	public void setClave(String clave) {
 		this.clave = clave;
 	}
+
 	public Integer getRol() {
-		return rol;
+		return this.rol;
 	}
+
 	public void setRol(Integer rol) {
 		this.rol = rol;
 	}
+
+
+	public List<Clientes> getClientes() {
+		return this.clientes;
+	}
+
+	public void setClientes(List<Clientes> clientes) {
+		this.clientes = clientes;
+	}
+
 	@Override
 	public String toString() {
-		return "Usuarios [idUsuarios=" + idUsuarios + ", nombre=" + nombre + ", usuario=" + usuario + ", clave=" + clave
-				+ ", rol=" + rol + "]";
+		return "{" +
+			" idUsuarios='" + getIdUsuarios() + "'" +
+			", nombre='" + getNombre() + "'" +
+			", usuario='" + getUsuario() + "'" +
+			", clave='" + getClave() + "'" +
+			", rol='" + getRol() + "'" +
+			", clientes='" + getClientes() + "'" +
+			"}";
 	}
+
 }
