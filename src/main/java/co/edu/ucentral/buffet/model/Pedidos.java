@@ -1,4 +1,4 @@
-package co.edu.ucentral.buffet.modelo;
+package co.edu.ucentral.buffet.model;
 
 import java.util.Date;
 
