@@ -19,7 +19,6 @@ public class Pedidos {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idPedidos;
-	private Integer idClientes;
 	private String direccion;
 	private String telefono;
 	private String formaPago;
@@ -46,14 +45,6 @@ public class Pedidos {
 
 	public void setIdPedidos(Integer idPedidos) {
 		this.idPedidos = idPedidos;
-	}
-
-	public Integer getIdClientes() {
-		return this.idClientes;
-	}
-
-	public void setIdClientes(Integer idClientes) {
-		this.idClientes = idClientes;
 	}
 
 	public String getDireccion() {
@@ -164,7 +155,6 @@ public class Pedidos {
 	public String toString() {
 		return "{" +
 			" idPedidos='" + getIdPedidos() + "'" +
-			", idClientes='" + getIdClientes() + "'" +
 			", direccion='" + getDireccion() + "'" +
 			", telefono='" + getTelefono() + "'" +
 			", formaPago='" + getFormaPago() + "'" +

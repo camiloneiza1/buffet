@@ -17,8 +17,6 @@ public class detPedidos {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer iddetPedidos;
-	private Integer idPlatos;
-    private Integer idPedidos;
     private Integer cantidad;
     private Double precioUnitario;
     private Double costoAdicionales;
@@ -42,22 +40,6 @@ public class detPedidos {
 
     public void setIddetPedidos(Integer iddetPedidos) {
         this.iddetPedidos = iddetPedidos;
-    }
-
-    public Integer getIdPlatos() {
-        return this.idPlatos;
-    }
-
-    public void setIdPlatos(Integer idPlatos) {
-        this.idPlatos = idPlatos;
-    }
-
-    public Integer getIdPedidos() {
-        return this.idPedidos;
-    }
-
-    public void setIdPedidos(Integer idPedidos) {
-        this.idPedidos = idPedidos;
     }
 
     public Integer getCantidad() {
@@ -129,8 +111,6 @@ public class detPedidos {
     public String toString() {
         return "{" +
             " iddetPedidos='" + getIddetPedidos() + "'" +
-            ", idPlatos='" + getIdPlatos() + "'" +
-            ", idPedidos='" + getIdPedidos() + "'" +
             ", cantidad='" + getCantidad() + "'" +
             ", precioUnitario='" + getPrecioUnitario() + "'" +
             ", costoAdicionales='" + getCostoAdicionales() + "'" +
