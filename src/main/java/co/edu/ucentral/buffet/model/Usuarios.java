@@ -16,9 +16,10 @@ public class Usuarios {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idUsuarios;
 	private String nombre;
-	private String usuario;
-	private String clave;
-	private Integer rol;
+	private String username;
+	private String password;
+	private Integer estatus;
+	private String email;
 
 	@OneToMany (mappedBy = "usuarios")
 	private List<Clientes> clientes;
@@ -35,34 +36,42 @@ public class Usuarios {
 		return this.nombre;
 	}
 
+
+	public String getUsername() {
+		return this.username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Integer getEstatus() {
+		return this.estatus;
+	}
+
+	public void setEstatus(Integer estatus) {
+		this.estatus = estatus;
+	}
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	public String getUsuario() {
-		return this.usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-	public String getClave() {
-		return this.clave;
-	}
-
-	public void setClave(String clave) {
-		this.clave = clave;
-	}
-
-	public Integer getRol() {
-		return this.rol;
-	}
-
-	public void setRol(Integer rol) {
-		this.rol = rol;
-	}
-
 
 	public List<Clientes> getClientes() {
 		return this.clientes;
@@ -77,11 +86,11 @@ public class Usuarios {
 		return "{" +
 			" idUsuarios='" + getIdUsuarios() + "'" +
 			", nombre='" + getNombre() + "'" +
-			", usuario='" + getUsuario() + "'" +
-			", clave='" + getClave() + "'" +
-			", rol='" + getRol() + "'" +
+			", username='" + getUsername() + "'" +
+			", password='" + getPassword() + "'" +
+			", estatus='" + getEstatus() + "'" +
+			", email='" + getEmail() + "'" +
 			", clientes='" + getClientes() + "'" +
 			"}";
 	}
-
 }
