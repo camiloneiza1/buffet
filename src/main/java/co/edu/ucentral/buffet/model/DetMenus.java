@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="detMenus")
-public class detMenus {
+public class DetMenus {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer iddetMenus;

@@ -27,10 +27,10 @@ public class Comidas {
     private CategoriasComida categoriasComida;
 
     @OneToMany (mappedBy = "comidas")
-    private List<detMenus> dMenus;
+    private List<DetMenus> dMenus;
 
     @OneToMany (mappedBy = "comidas")
-    private List<detPedidosHasComidas> dPedidosHasComidas;
+    private List<DetPedidosHasComidas> dPedidosHasComidas;
 
     @OneToMany (mappedBy = "comidas")
     private List<PedidosHasComidas> pedidosHasComidas;
@@ -85,19 +85,19 @@ public class Comidas {
         this.categoriasComida = categoriasComida;
     }
 
-    public List<detMenus> getDMenus() {
+    public List<DetMenus> getDMenus() {
         return this.dMenus;
     }
 
-    public void setDMenus(List<detMenus> dMenus) {
+    public void setDMenus(List<DetMenus> dMenus) {
         this.dMenus = dMenus;
     }
 
-    public List<detPedidosHasComidas> getDPedidosHasComidas() {
+    public List<DetPedidosHasComidas> getDPedidosHasComidas() {
         return this.dPedidosHasComidas;
     }
 
-    public void setDPedidosHasComidas(List<detPedidosHasComidas> dPedidosHasComidas) {
+    public void setDPedidosHasComidas(List<DetPedidosHasComidas> dPedidosHasComidas) {
         this.dPedidosHasComidas = dPedidosHasComidas;
     }
 

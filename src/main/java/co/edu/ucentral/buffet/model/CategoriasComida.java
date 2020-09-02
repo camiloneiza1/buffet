@@ -22,7 +22,7 @@ public class CategoriasComida {
     private List<Comidas> comidas;
 
     @OneToMany (mappedBy = "categoriasComida")
-    private List<detPlatos> dPlatos;
+    private List<DetPlatos> dPlatos;
     
 
     public Integer getIdCategoriasComida() {
@@ -58,11 +58,11 @@ public class CategoriasComida {
         this.comidas = comidas;
     }
 
-    public List<detPlatos> getDPlatos() {
+    public List<DetPlatos> getDPlatos() {
         return this.dPlatos;
     }
 
-    public void setDPlatos(List<detPlatos> dPlatos) {
+    public void setDPlatos(List<DetPlatos> dPlatos) {
         this.dPlatos = dPlatos;
     }
 

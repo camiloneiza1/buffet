@@ -22,7 +22,7 @@ public class Menus {
     private String imagen;
     
     @OneToMany (mappedBy = "menus")
-    private List<detMenus> dMenus;
+    private List<DetMenus> dMenus;
 
 	public Integer getIdMenus() {
 		return idMenus;
@@ -55,11 +55,11 @@ public class Menus {
 		this.imagen = imagen;
 	}
 
-	public List<detMenus> getDMenus() {
+	public List<DetMenus> getDMenus() {
 		return this.dMenus;
 	}
 
-	public void setDMenus(List<detMenus> dMenus) {
+	public void setDMenus(List<DetMenus> dMenus) {
 		this.dMenus = dMenus;
 	}
 	

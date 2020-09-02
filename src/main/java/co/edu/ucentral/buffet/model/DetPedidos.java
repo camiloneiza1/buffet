@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="detPedidos")
-public class detPedidos {
+public class DetPedidos {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer iddetPedidos;
@@ -24,7 +24,7 @@ public class detPedidos {
     private String observaciones;
 
     @OneToMany (mappedBy = "dPedidos")
-    private List<detPedidosHasComidas> dPedidosHasComidas;
+    private List<DetPedidosHasComidas> dPedidosHasComidas;
 
     @ManyToOne
     @JoinColumn (name = "idPlatos")
@@ -83,11 +83,11 @@ public class detPedidos {
     }
 
 
-    public List<detPedidosHasComidas> getDPedidosHasComidas() {
+    public List<DetPedidosHasComidas> getDPedidosHasComidas() {
         return this.dPedidosHasComidas;
     }
 
-    public void setDPedidosHasComidas(List<detPedidosHasComidas> dPedidosHasComidas) {
+    public void setDPedidosHasComidas(List<DetPedidosHasComidas> dPedidosHasComidas) {
         this.dPedidosHasComidas = dPedidosHasComidas;
     }
 

@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="detPedidosHasComidas")
-public class detPedidosHasComidas {
+public class DetPedidosHasComidas {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer iddetPedidosHasComidas;
@@ -19,7 +19,7 @@ public class detPedidosHasComidas {
 
     @ManyToOne
     @JoinColumn (name = "iddetPedidos")
-    private detPedidos dPedidos;
+    private DetPedidos dPedidos;
 
     @ManyToOne
     @JoinColumn (name = "idComidas")
@@ -49,11 +49,11 @@ public class detPedidosHasComidas {
         this.precio = precio;
     }
 
-    public detPedidos getDPedidos() {
+    public DetPedidos getDPedidos() {
         return this.dPedidos;
     }
 
-    public void setDPedidos(detPedidos dPedidos) {
+    public void setDPedidos(DetPedidos dPedidos) {
         this.dPedidos = dPedidos;
     }
 

@@ -21,10 +21,10 @@ public class Platos {
 	private Double foto;
 
 	@OneToMany (mappedBy = "platos")
-	private List<detPedidos> dPedidos;
+	private List<DetPedidos> dPedidos;
 
 	@OneToMany (mappedBy = "platos")
-	private List<detPlatos> dPlatos;
+	private List<DetPlatos> dPlatos;
 	
 
 	public Integer getIdPlatos() {
@@ -67,19 +67,19 @@ public class Platos {
 		this.foto = foto;
 	}
 
-	public List<detPedidos> getDPedidos() {
+	public List<DetPedidos> getDPedidos() {
 		return this.dPedidos;
 	}
 
-	public void setDPedidos(List<detPedidos> dPedidos) {
+	public void setDPedidos(List<DetPedidos> dPedidos) {
 		this.dPedidos = dPedidos;
 	}
 
-	public List<detPlatos> getDPlatos() {
+	public List<DetPlatos> getDPlatos() {
 		return this.dPlatos;
 	}
 
-	public void setDPlatos(List<detPlatos> dPlatos) {
+	public void setDPlatos(List<DetPlatos> dPlatos) {
 		this.dPlatos = dPlatos;
 	}
 
