@@ -23,19 +23,19 @@ public class PedidosServiceImplJpa implements PedidosService {
 	}
 
 	@Override
-	public Pedidos buscarPorId(int idPedido) {
+	public Pedidos buscarPorId(final int idPedido) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void guardar(Pedidos pedido) {
+	public void guardar(final Pedidos pedido) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void borrar(int idPedido) {
+	public void borrar(final int idPedido) {
 		// TODO Auto-generated method stub
 
 	}
