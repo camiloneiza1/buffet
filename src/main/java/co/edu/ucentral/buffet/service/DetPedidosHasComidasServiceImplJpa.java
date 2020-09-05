@@ -1,9 +1,12 @@
 package co.edu.ucentral.buffet.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import co.edu.ucentral.buffet.model.DetPedidosHasComidas;
@@ -18,26 +21,31 @@ public class DetPedidosHasComidasServiceImplJpa implements DetPedidosHasComidasS
 	
 	@Override
 	public List<DetPedidosHasComidas> listarDetPedidosHasComidas() {
-		// TODO Auto-generated method stub
-		return null;
+		return repo.findAll();
 	}
 
 	@Override
 	public DetPedidosHasComidas buscarPorId(int idDetPedidosHasComida) {
-		// TODO Auto-generated method stub
+		Optional<DetPedidosHasComidas> optional= repo.findById(idDetPedidosHasComida);
+		if(optional.isPresent()) {
+			return optional.get();
+		}
 		return null;
 	}
 
 	@Override
 	public void guardar(DetPedidosHasComidas detPedidosHasComida) {
-		// TODO Auto-generated method stub
-
+		repo.save(detPedidosHasComida);
 	}
 
 	@Override
 	public void borrar(int idDetPedidosHasComida) {
-		// TODO Auto-generated method stub
+		repo.deleteById(idDetPedidosHasComida);
+	}
 
+	@Override
+	public Page<DetPedidosHasComidas> paginarDetPedidosHasComidas(Pageable page) {
+		return repo.findAll(page);
 	}
 
 }

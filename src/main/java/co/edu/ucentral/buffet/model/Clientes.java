@@ -123,20 +123,11 @@ public class Clientes {
         this.pedidos = pedidos;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-            " idClientes='" + getIdClientes() + "'" +
-            ", nombres='" + getNombres() + "'" +
-            ", apellidos='" + getApellidos() + "'" +
-            ", tipoDocumento='" + getTipoDocumento() + "'" +
-            ", numeroDocumento='" + getNumeroDocumento() + "'" +
-            ", telefono='" + getTelefono() + "'" +
-            ", direccion='" + getDireccion() + "'" +
-            ", ciudad='" + getCiudad() + "'" +
-            ", fechaNacimiento='" + getFechaNacimiento() + "'" +
-            ", usuarios='" + getUsuarios() + "'" +
-            ", pedidos='" + getPedidos() + "'" +
-            "}";
-    }
+	@Override
+	public String toString() {
+		return "Clientes [idClientes=" + idClientes + ", nombres=" + nombres + ", apellidos=" + apellidos
+				+ ", tipoDocumento=" + tipoDocumento + ", numeroDocumento=" + numeroDocumento + ", telefono=" + telefono
+				+ ", direccion=" + direccion + ", ciudad=" + ciudad + ", fechaNacimiento=" + fechaNacimiento
+				+ ", usuarios=" + usuarios + ", pedidos=" + pedidos + "]";
+	}
 }

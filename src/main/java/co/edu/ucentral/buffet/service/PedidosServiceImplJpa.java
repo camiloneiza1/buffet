@@ -1,9 +1,12 @@
 package co.edu.ucentral.buffet.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import co.edu.ucentral.buffet.model.Pedidos;
@@ -18,26 +21,31 @@ public class PedidosServiceImplJpa implements PedidosService {
 	
 	@Override
 	public List<Pedidos> listarPedidos() {
-		// TODO Auto-generated method stub
-		return null;
+		return repo.findAll();
 	}
 
 	@Override
 	public Pedidos buscarPorId(final int idPedido) {
-		// TODO Auto-generated method stub
+		Optional<Pedidos> optional= repo.findById(idPedido);
+		if(optional.isPresent()) {
+			return optional.get();
+		}
 		return null;
 	}
 
 	@Override
 	public void guardar(final Pedidos pedido) {
-		// TODO Auto-generated method stub
-
+		repo.save(pedido);
 	}
 
 	@Override
 	public void borrar(final int idPedido) {
-		// TODO Auto-generated method stub
+		repo.deleteById(idPedido);
+	}
 
+	@Override
+	public Page<Pedidos> paginarPedidos(Pageable page) {
+		return repo.findAll(page);
 	}
 
 }
