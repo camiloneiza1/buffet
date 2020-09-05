@@ -30,6 +30,7 @@ public class DataBaseWebSecurity extends WebSecurityConfigurerAdapter{
 				"/fonts/**",
 				"/images/**",
 				"/tinymce/**").permitAll()
+		.antMatchers("/menus/**").hasAnyAuthority("ADMINISTRADOR")
 		.antMatchers(
 				"/",
 				"/search/**").permitAll()

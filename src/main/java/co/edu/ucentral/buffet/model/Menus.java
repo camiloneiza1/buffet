@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="menus")
+@Table(name="Menus")
 public class Menus {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

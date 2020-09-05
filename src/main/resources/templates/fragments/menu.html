@@ -17,20 +17,20 @@
                                 <span class="icon-bar"></span>
                               </button>
                                   <a class="navbar-brand" href="#">
-                                    <img src="images/BUFFET.png" alt="Logo" style="width: 150px;">
+                                    <img th:src="@{/images/BUFFET.png}" alt="Logo" style="width: 150px;">
                                   </a>
 
                             </div>
 
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                              <ul class="nav navbar-nav navbar-right" id="top-nav">
+                              <ul class="nav navbar-nav navbar-right" id="">
                                 <li><a th:href="@{/#hero-area}">Inicio</a></li>
                                 <li><a th:href="@{/#blog}">Blog</a></li>
-                                <li><a th:href="@{/#price}">Menu</a></li>
-                                <li><a th:href="@{/menus/index}">Menu</a></li>
-                                <li><a th:href="@{/login}">Ingresar</a></li>
-                                <li><a href="">Registrarse</a></li>
+                                <li sec:authorize="isAnonymous()"><a th:href="@{/#price}">Menu</a></li>
+                                <li sec:authorize="hasAnyAuthority('ADMINISTRADOR')" ><a th:href="@{/menus/index}">Menus</a></li>
+                                <li sec:authorize="isAnonymous()"><a class="btn btn-secundary" th:href="@{/login}">Ingresar</a></li>
+                                <li sec:authorize="isAnonymous()"><a class="btn btn-secundary" href="">Registrarse</a></li>
                               </ul>
                             </div><!-- /.navbar-collapse -->
                           </div><!-- /.container-fluid -->

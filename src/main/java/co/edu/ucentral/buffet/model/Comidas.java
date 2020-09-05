@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="comidas")
+@Table(name="Comidas")
 public class Comidas {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -23,7 +23,7 @@ public class Comidas {
     private String foto;
 
     @ManyToOne
-    @JoinColumn (name = "idCategoriasComidas")
+    @JoinColumn (name = "idCategoriasComida")
     private CategoriasComida categoriasComida;
 
     @OneToMany (mappedBy = "comidas")
