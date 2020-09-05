@@ -1,6 +1,9 @@
 package co.edu.ucentral.buffet.service;
 
+import java.text.SimpleDateFormat;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -18,25 +21,27 @@ public class MenusServiceImplJpa implements MenusService {
 	
 	@Override
 	public List<Menus> listarMenus() {
-		// TODO Auto-generated method stub
-		return null;
+		return repo.findAll();
 	}
 
 	@Override
 	public Menus buscarPorId(int idMenu) {
-		// TODO Auto-generated method stub
+		Optional<Menus> optional= repo.findById(idMenu);
+		if(optional.isPresent()) {
+			return optional.get();
+		}
 		return null;
 	}
 
 	@Override
 	public void guardar(Menus menu) {
-		// TODO Auto-generated method stub
+		repo.save(menu);
 
 	}
 
 	@Override
 	public void borrar(int idMenu) {
-		// TODO Auto-generated method stub
+		repo.deleteById(idMenu);
 
 	}
 

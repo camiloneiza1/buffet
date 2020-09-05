@@ -25,11 +25,12 @@
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                               <ul class="nav navbar-nav navbar-right" id="top-nav">
-                                <li><a href="#hero-area">Inicio</a></li>
-                                <li><a href="#blog">Blog</a></li>
-                                <li><a href="#price">Menu</a></li>
-                                <li><a href="#">Ingresar</a></li>
-                                <li><a href="#">Registrarse</a></li>
+                                <li><a th:href="@{/#hero-area}">Inicio</a></li>
+                                <li><a th:href="@{/#blog}">Blog</a></li>
+                                <li><a th:href="@{/#price}">Menu</a></li>
+                                <li><a th:href="@{/menus/index}">Menu</a></li>
+                                <li><a th:href="@{/login}">Ingresar</a></li>
+                                <li><a href="">Registrarse</a></li>
                               </ul>
                             </div><!-- /.navbar-collapse -->
                           </div><!-- /.container-fluid -->
