@@ -33,10 +33,9 @@
                                 <li sec:authorize="isAnonymous()"><a th:href="@{/#price}">Menu</a></li>
                                 <li sec:authorize="hasAnyAuthority('ADMINISTRADOR')" ><a th:href="@{/menus/index}">Menus</a></li>
                                 <li sec:authorize="isAnonymous()"><a class="btn btn-secundary" th:href="@{/login}">Ingresar</a></li>
-                                <li sec:authorize="isAnonymous()"><a class="btn btn-secundary" href="">Registrarse</a></li>
+                                <li sec:authorize="isAnonymous()"><a class="btn btn-secundary" th:href="@{/signup}">Registrarse</a></li>
                                 <li sec:authorize="isAuthenticated()"><a class="btn btn-secundary" th:href="@{/logout}"><i class="fa fa-power-off" aria-hidden="true"></i>
                                 </a></li>
-                                
                               </ul>
                             </div><!-- /.navbar-collapse -->
                           </div><!-- /.container-fluid -->

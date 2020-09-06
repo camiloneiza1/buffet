@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html class="no-js" xmlns:th="http://thymeleaf.org">
+<head th:insert="fragments/head :: head">
+</head>
+<body>
+	<!--
+	header-img start 
+	============================== -->
+	<section id="hero-area">
+		<img class="img-responsive" th:src="@{/images/header.jpg}" alt="">
+	</section>
+	<header th:insert="fragments/menu :: menu-principal"> </header>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-warning">
+					<h4 class="panel-heading text-center">
+						<strong>Formulario de Registro</strong>
+					</h4>
+					<div class="panel-body">
+						<form th:action="@{signup}" method="post" th:objetc="${usuario}">
+							<div class="row">
+								<div class="col-md-3">
+									<div class="form-group">
+										<label for="nombre">Nombres</label> <input type="text"
+											class="form-control" id="nombres" name="nombres"
+											placeholder="Escriba sus nombres.." required="required">
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<label for="nombre">Apellidos</label> <input type="text"
+											class="form-control" id="apellidos" name="apellidos"
+											placeholder="Escriba sus apellidos.." required="required">
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<label for="email">Correo electronico</label> <input
+											type="email" class="form-control" id="email" name="email"
+											placeholder="Escriba su correo electronico"
+											required="required">
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<label for="username">Username</label> <input type="text"
+											class="form-control" id="username" name="username"
+											placeholder="Escriba su nombre de usuario"
+											required="required">
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<label for="password">Password</label><input type="password"
+											class="form-control" id="password" name="password"
+											placeholder="Escriba su clave de acceso" required="required">
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+									<label for="estado">Estado</label> 
+										<select name="estado" id="estado" class="form-control input-sm" required="required">
+											<option value="">Seleccione...</option>
+											<option value="1">ACTIVO</option>
+											<option value="2">INACTIVO</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+									<label for="estado">Tipo Documento</label>
+										<select name="tipo_documento" id="tipo_documento"
+											class="form-control input-sm" required="required">
+											<option value="">Seleccione...</option>
+											<option value="CC">CC</option>
+											<option value="CE">CE</option>
+											<option value="TI">TI</option>
+											<option value="PASAPORTE">PASAPORTE</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<label for="number">Numero de Documento</label> <input
+											type="text" class="form-control" id="numeroDocumento"
+											name="numeroDocumento"
+											placeholder="Escriba su numero de documento.."
+											required="required">
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<label for="number">Telefono</label> <input type="text"
+											class="form-control" id="telefono" name="telefono"
+											placeholder="Escriba su numero de telefono.."
+											required="required">
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<label for="number">Direccion</label> <input type="text"
+											class="form-control" id="direccion" name="direccion"
+											placeholder="Escriba su direccion.." required="required">
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<label for="text">Ciudad</label> <input type="text"
+											class="form-control" id="ciudad" name="ciudad"
+											placeholder="Escriba su ciudad" required="required">
+									</div>
+								</div>
+							</div>
+							<hr>
+							<button type="submit" title="Quiero registrarme."
+								class="btn btn-primary">Registrarse</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /container -->
+	<footer th:insert="fragments/footer :: footer"> </footer>
+</body>
+</html>

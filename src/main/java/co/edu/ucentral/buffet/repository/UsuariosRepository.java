@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import co.edu.ucentral.buffet.model.Usuarios;
 
 public interface UsuariosRepository extends JpaRepository<Usuarios, Integer> {
-
+	public Usuarios findByUsername(String username);
 }
