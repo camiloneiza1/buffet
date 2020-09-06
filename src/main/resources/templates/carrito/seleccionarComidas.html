@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class="no-js" xmlns:th="http://thymeleaf.org">
+<head th:insert="fragments/head :: head">
+</head>
+<body>
+	<!--
+	header-img start 
+	============================== -->
+	<section id="hero-area">
+		<img class="img-responsive" th:src="@{/images/header.jpg}" alt="">
+	</section>
+	<header th:insert="fragments/menu :: menu-principal"> </header>
+
+	<div class="container">
+		<div clas="row">
+			<div class="col-md-12">
+				<div class="panel panel-warning">
+					<h4 class="panel-heading text-center">
+						<strong>Menu Principal</strong>
+					</h4>
+					<div class="panel-body">
+						<form action="#" method="post" th:object="${menu}">
+							<div th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
+								role="alert">
+								¡Lista de errores al procesar el formulario!
+								<ul>
+									<li th:each="err : ${#fields.errors('*')}" th:text="${err}" />
+								</ul>
+							</div>
+							<div class="row">
+								<div class="col-md-3">
+									<div class="form-group">
+										<input type="hidden" th:field="*{idMenus}"> <label
+											for="nombre">Nombre</label> <input type="text"
+											class="form-control" th:field="*{nombre}" id="nombre"
+											name="nombre" placeholder="Nombre del Menu"
+											required="required">
+									</div>
+								</div>
+								<div class="col-md-5">
+									<div class="form-group">
+										<label for="descripcion">Descripción</label> <input
+											type="text" class="form-control" th:field="*{descripcion}"
+											id="descripcion" name="descripcion"
+											placeholder="Breve descripcion del menu" required="required">
+									</div>
+								</div>
+
+								<div class="col-md-3">
+									<div class="form-group">
+										<label for="precio">Precio</label> <input type="number"
+											class="form-control" th:field="*{precio}" id="precio"
+											name="precio" required="required">
+									</div>
+								</div>
+
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div clas="row">
+			<div class="col-md-12">
+				<div class="panel panel-warning">
+					<h4 class="panel-heading text-center">
+						<strong>Comidas</strong>
+					</h4>
+					<div class="panel-body">
+						<form >
+							<div class="row">
+								<div class="col-sm-12">
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th>Comida</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="detmenu: ${menu.dMenus}">
+												<td th:text="${detmenu.comidas.nombre}"></td>
+												<td><input type="checkbox" name="seclect[]"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+	<footer th:insert="fragments/footer :: footer"> </footer>
+</body>
+</html>

@@ -435,7 +435,7 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
   text-align: center;
 }
 #price .block .pricing-list {
-  padding-top: 85px;
+  padding-top: 15px;
 }
 #price .block .pricing-list ul {
   padding: 0 0 30px;
@@ -470,7 +470,7 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
   color: #949494;
 }
 #price .block .pricing-list .btn {
-  padding: 28px 105px;
+  padding: 8px 10px;
   border-radius: 0px;
   background: none;
   color: #FF4F02;

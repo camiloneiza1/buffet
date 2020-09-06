@@ -74,7 +74,6 @@ public class MenuController {
 		if(result.hasErrors()) {
 			return "menus/formDetMenus";
 		}
-		System.out.println(detMenu);	
 		detMenuService.guardar(detMenu);
 		attributes.addFlashAttribute("msg", "Registro guardo");
 		attributes.addAttribute("id", detMenu.getMenus().getIdMenus());
