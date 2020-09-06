@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html class="no-js" xmlns:th="http://thymeleaf.org">
+<head th:insert="fragments/head :: head">
+</head>
+<body>
+	<!--
+	header-img start 
+	============================== -->
+	<section id="hero-area">
+		<img class="img-responsive" th:src="@{/images/header.jpg}" alt="">
+	</section>
+	<header th:insert="fragments/menu :: menu-principal"> </header>
+	<section id="price">
+		<div class="container">
+			<div th:if="${msg != null}" th:text="${msg}"
+				class="alert alert-success" role="alert"></div>
+			<br />
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-warning">
+						<h4 class="panel-heading text-center">
+							<strong>Comidas</strong>
+						</h4>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-sm-12 text-right">
+									<a class="btn btn-warning" th:href="@{/comidas/create}">Agregar</a>
+								</div>
+								<div class="col-sm-12">
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th>Id</th>
+												<th>Nombre</th>
+												<th>Descripcion</th>
+												<th>Precio</th>
+												<th>Foto</th>
+												<th colspan="2">Accion</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="comidas: ${list_comidas}">
+												<td th:text="${comidas.idComidas}"></td>
+												<td th:text="${comidas.nombre}"></td>
+												<td th:text="${comidas.descripcion}"></td>
+												<td th:text="${comidas.precio}"></td>
+												<td>
+													<a th:href="@{/comidas/view/{id} (id=${comidas.idComidas})}" class="btn btn-success btn-sm" role="button" title="Editar">
+														<i class="fa fa-refresh" aria-hidden="true"></i>
+													</a> 
+													<a th:href="@{/comidas/delete/{id} (id=${comidas.idComidas})}" onclick="return confirm('¿Estas seguro de eliminar?')" class="btn btn-danger btn-sm" role="button" title="Eliminar"> 
+														<i class="fa fa-trash"aria-hidden="true"></i>
+													</a>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+
+									<nav aria-label="Pagination"
+										th:if="${list_comidas.totalPages gt 0}">
+										<ul class="pagination justify-content-center font-weight-bold">
+											<li class="page-item"
+												th:classappend="${list_comidas.number eq 0} ? 'disabled'">
+												<a class="page-link"
+												th:href="@{/menus/index(page=${list_comidas.number - 1})}"
+												aria-label="Previous" title="Previous Page"
+												data-toggle="tooltip"
+												th:disabled="${list_comidas.number eq 0}"> <span
+													aria-hidden="true">&laquo;</span>
+											</a>
+											</li>
+											<li class="page-item"
+												th:classappend="${i eq list_comidas.number + 1} ? 'active'"
+												th:each="i : ${#numbers.sequence( 1, list_comidas.totalPages, 1)}">
+												<a class="page-link"
+												th:href="@{/comidas/index?page={id}(id=${i - 1})}"
+												th:text="${i}" th:title="${'Pagina '+ i}"
+												data-toggle="tooltip"></a>
+											</li>
+											<li class="page-item"
+												th:classappend="${list_comidas.number + 1 eq list_comidas.totalPages} ? 'disabled'">
+												<a class="page-link"
+												th:href="@{/comidas/index(page=${list_comidas.number + 1})}"
+												aria-label="Next" title="Next Page" data-toggle="tooltip"
+												th:disabled="${list_comidas.number + 1 eq list_comidas.totalPages}">
+													<span aria-hidden="true">&raquo;</span>
+											</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			
+			
+		
+		</div>
+	</section>
+	<footer th:insert="fragments/footer :: footer"> </footer>
+</body>
+</html>

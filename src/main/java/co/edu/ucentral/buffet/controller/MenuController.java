@@ -65,7 +65,7 @@ public class MenuController {
 		}
 		menuService.guardar(menu);
 		System.out.println("Menu: " + menu);
-		attributes.addFlashAttribute("msg", "Registro guardo");
+		attributes.addFlashAttribute("msg", "Registro guardado");
 		return "redirect:/menus/index";
 	}
 	
