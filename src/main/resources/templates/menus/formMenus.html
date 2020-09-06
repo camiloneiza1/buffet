@@ -54,6 +54,13 @@
 								</div>
 								<div class="col-md-3">
 									<div class="form-group">
+										<label for="precio">Precio</label> <input
+											type="number" class="form-control" th:field="*{precio}"
+											id="precio" name="precio" required="required">
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
 										<label for="descripcion">Imagen</label> <input type="file"
 											class="form-control" th:field="*{imagen}" id="imagen"
 											name="imagen" placeholder="B">
@@ -84,7 +91,6 @@
 											<tr>
 												<th>Id</th>
 												<th>Comida</th>
-												<th>Cantidad</th>
 												<th colspan="2">Accion</th>
 											</tr>
 										</thead>
@@ -92,7 +98,6 @@
 											<tr th:each="detmenu: ${menu.dMenus}">
 												<td th:text="${detmenu.iddetMenus}"></td>
 												<td th:text="${detmenu.comidas.nombre}"></td>
-												<td th:text="${detmenu.cantidad}"></td>
 												<td>
 													<a th:href="@{/menus/detmenus/view/{idDet} (idDet=${detmenu.iddetMenus})}" class="btn btn-success btn-sm" role="button" title="Editar">
 														<i class="fa fa-refresh" aria-hidden="true"></i>

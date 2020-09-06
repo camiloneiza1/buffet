@@ -22,10 +22,6 @@ public class Comidas {
 	private Double precio;
     private String foto;
 
-    @ManyToOne
-    @JoinColumn (name = "idCategoriasComida")
-    private CategoriasComida categoriasComida;
-
     @OneToMany (mappedBy = "comidas")
     private List<DetMenus> dMenus;
 
@@ -73,14 +69,6 @@ public class Comidas {
     }
 
 
-    public CategoriasComida getCategoriasComida() {
-        return this.categoriasComida;
-    }
-
-    public void setCategoriasComida(CategoriasComida categoriasComida) {
-        this.categoriasComida = categoriasComida;
-    }
-
     public List<DetMenus> getDMenus() {
         return this.dMenus;
     }
@@ -105,7 +93,6 @@ public class Comidas {
             ", descripcion='" + getDescripcion() + "'" +
             ", precio='" + getPrecio() + "'" +
             ", foto='" + getFoto() + "'" +
-            ", categoriasComida='" + getCategoriasComida() + "'" +
             ", dMenus='" + getDMenus() + "'" +
             ", dPedidosHasComidas='" + getDPedidosHasComidas() + "'" +
             "}";

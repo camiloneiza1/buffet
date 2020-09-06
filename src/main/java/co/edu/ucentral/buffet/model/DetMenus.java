@@ -14,7 +14,6 @@ public class DetMenus {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer iddetMenus;
-    private Integer Cantidad;
 
     @ManyToOne
     @JoinColumn (name = "idComidas")
@@ -32,13 +31,6 @@ public class DetMenus {
         this.iddetMenus = iddetMenus;
     }
 
-    public Integer getCantidad() {
-        return this.Cantidad;
-    }
-
-    public void setCantidad(Integer Cantidad) {
-        this.Cantidad = Cantidad;
-    }
 
     public Comidas getComidas() {
         return this.comidas;
@@ -60,7 +52,6 @@ public class DetMenus {
     public String toString() {
         return "{" +
             " iddetMenus='" + getIddetMenus() + "'" +
-            ", Cantidad='" + getCantidad() + "'" +
             ", comidas='" + getComidas() + "'" +
             ", menus='" + getMenus() + "'" +
             "}";

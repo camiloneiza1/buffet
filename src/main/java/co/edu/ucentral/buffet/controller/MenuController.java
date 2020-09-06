@@ -45,6 +45,7 @@ public class MenuController {
 	
 	@RequestMapping(value="/create", method=RequestMethod.GET)
 	public String crear(Model model, Menus menu) {
+		model.addAttribute("menu", menu);
 		return "menus/formMenus";
 	}
 	
