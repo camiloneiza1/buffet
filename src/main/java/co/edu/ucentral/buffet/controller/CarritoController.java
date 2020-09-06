@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.edu.ucentral.buffet.model.DetPedidos;
+import co.edu.ucentral.buffet.model.DetPedidosHasComidas;
 import co.edu.ucentral.buffet.model.Menus;
 import co.edu.ucentral.buffet.service.MenusService;
 
@@ -34,19 +35,19 @@ public class CarritoController {
 		return "index";
 	}
 	
-	@RequestMapping(value="/addDetPedido/", method=RequestMethod.POST)
-	public String addMenuCarrito(Model model, HttpServletRequest request, RedirectAttributes attributes) {
+	@RequestMapping(value="/addDetPedido", method=RequestMethod.POST)
+	public String addMenuCarrito(Model model, HttpServletRequest request, RedirectAttributes attributes, DetPedidosHasComidas detPedidosHasComidas) {
+		
+		System.out.println(detPedidosHasComidas.toString());
 		detPedidos = this.obtenerCarrito(request);
 		menuTemp = this.obtenerMenu(request);
 		
-		Menus menu = menuService.buscarPorId(menuTemp.getIdMenus());
-		
-		if (menu.getIdMenus() != null) {
+		if (menuTemp.getIdMenus() != null) {
 			if (detPedidos != null) {
-				menu.setDMenus(null);
+				menuTemp.setDMenus(null);
 		    	DetPedidos detped = new DetPedidos();
 		    	detped.setCantidad(1);
-		    	detped.setMenus(menu);
+		    	detped.setMenus(menuTemp);
 		    	detped.setPedidos(null);
 		    	detPedidos.add(detped);
 			}else {
@@ -54,7 +55,7 @@ public class CarritoController {
 			}
 		}
 		 this.guardarCarrito(detPedidos, request);
-		 attributes.addAttribute("idMenu", menu.getIdMenus());
+		 attributes.addAttribute("idMenu", menuTemp.getIdMenus());
 		 return "redirect:/carrito/selectComida/{idMenu}";
 	}
 	
@@ -73,6 +74,10 @@ public class CarritoController {
 	@RequestMapping(value="/addMenu/{id}", method=RequestMethod.GET)
 	public String guardarMenu(@PathVariable("id") int idMenu, Model model, HttpServletRequest request, RedirectAttributes attributes) {
 		Menus menu = menuService.buscarPorId(idMenu);
+		menuTemp = this.obtenerMenu(request);
+		if (menuTemp != null) {
+			request.getSession().removeAttribute("menuCrr");
+		}
 	    request.getSession().setAttribute("menuCrr", menu);
 	    attributes.addAttribute("idMenu", menu.getIdMenus());
 		return "redirect:/carrito/selectComida/{idMenu}";

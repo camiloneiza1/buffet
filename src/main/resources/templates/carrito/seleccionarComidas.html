@@ -67,7 +67,7 @@
 						<strong>Comidas</strong>
 					</h4>
 					<div class="panel-body">
-						<form >
+						<form th:action="@{/carrito/addDetPedido}" method="post">
 							<div class="row">
 								<div class="col-sm-12">
 									<table class="table table-striped">
@@ -79,10 +79,11 @@
 										<tbody>
 											<tr th:each="detmenu: ${menu.dMenus}">
 												<td th:text="${detmenu.comidas.nombre}"></td>
-												<td><input type="checkbox" name="seclect[]"></td>
+												<td><input type="checkbox" name="seclect[]" th:value="${detmenu.comidas.idComidas}"></td>
 											</tr>
 										</tbody>
 									</table>
+									<button class="btn btn-default" type="submit">Guardar</button>
 								</div>
 							</div>
 						</form>
