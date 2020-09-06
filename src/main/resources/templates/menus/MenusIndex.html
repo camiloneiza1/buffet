@@ -1,39 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" xmlns:th="http://thymeleaf.org">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Menus</title>
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- CSS
-        ================================================ -->
-<!-- Owl Carousel -->
-<link rel="stylesheet" th:href="@{/css/owl.carousel.css}">
-<!-- bootstrap.min css -->
-<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-<!-- Font-awesome.min css -->
-<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
-<!-- Main Stylesheet -->
-<link rel="stylesheet" th:href="@{/css/animate.min.css}">
-
-<link rel="stylesheet" th:href="@{/css/main.css}">
-<!-- Responsive Stylesheet -->
-<link rel="stylesheet" th:href="@{/css/responsive.css}">
-<!-- Js -->
-<script th:src="@{/js/vendor/modernizr-2.6.2.min.js}"></script>
-<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
-<script>
-	window.jQuery
-			|| document.write(
-					'<script src="/js/vendor/jquery-1.10.2.min.js"><\/script>')
-</script>
-<script th:src="@{/js/jquery.nav.js}"></script>
-<script th:src="@{/js/jquery.sticky.js}"></script>
-<script th:src="@{/js/bootstrap.min.js}"></script>
-<script th:src="@{/js/plugins.js}"></script>
-<script th:src="@{/js/wow.min.js}"></script>
-<script th:src="@{/js/main.js}"></script>
+<head th:insert="fragments/head :: head">
 </head>
 <body>
 	<!--
@@ -45,60 +12,89 @@
 	<header th:insert="fragments/menu :: menu-principal"> </header>
 	<section id="price">
 		<div class="container">
-			<div class="row">
-				<div class="col-sm-12 text-right">
-					<a class="btn btn-primary" th:href="@{/menus/crear}">Agregar</a>	
-				</div>
-				<div class="col-sm-12">
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>Id</th>
-								<th>Nombre</th>
-								<th>Descripcion</th>
-								<th>Fecha</th>
-								<th colspan="2">Accion</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="menus: ${list_menus}">
-								<td th:text="${menus.idMenus}"></td>
-								<td th:text="${menus.nombre}"></td>
-								<td th:text="${menus.descripcion}"></td>
-								<td th:text="${menus.fecha}"></td>
-								<td>
-									<a th:href="@{/menus/view/{id} (id=${menus.idMenus})}" class="btn btn-success btn-sm" role="button" title="Editar">
-										<i class="fa fa-refresh" aria-hidden="true"></i>
-									</a>
-									<a th:href="@{/menus/delete/(id=${menus.idMenus})}" onclick="return confirm('¿Estas seguro?')" class="btn btn-danger btn-sm" role="button" title="Eliminar">
-										<i class="fa fa-trash" aria-hidden="true"></i>
-									</a>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-		
-					<nav aria-label="Pagination" th:if="${list_menus.totalPages gt 0}">
-						<ul class="pagination justify-content-center font-weight-bold">
-							<li class="page-item" th:classappend="${list_menus.number eq 0} ? 'disabled'">
-								<a class="page-link" th:href="@{/menus/index(page=${list_menus.number - 1})}" aria-label="Previous" title="Previous Page" data-toggle="tooltip" th:disabled="${list_menus.number eq 0}">
-									<span aria-hidden="true">&laquo;</span>
-								</a>
-							</li>
-							<li class="page-item" th:classappend="${i eq list_menus.number + 1} ? 'active'" th:each="i : ${#numbers.sequence( 1, list_menus.totalPages, 1)}">
-								<a class="page-link" th:href="@{/menus/index?page={id}(id=${i - 1})}" th:text="${i}" th:title="${'Pagina '+ i}" data-toggle="tooltip"></a>
-							</li>
-							<li class="page-item" th:classappend="${list_menus.number + 1 eq list_menus.totalPages} ? 'disabled'">
-								<a class="page-link" th:href="@{/menus/index(page=${list_menus.number + 1})}" aria-label="Next" title="Next Page" data-toggle="tooltip" th:disabled="${list_menus.number + 1 eq list_menus.totalPages}"> 
-									<span aria-hidden="true">&raquo;</span>
-								</a>
-							</li>
-						</ul>
-					</nav>
+			<div th:if="${msg != null}" th:text="${msg}"
+				class="alert alert-success" role="alert"></div>
+			<br />
+			<div clas="row">
+				<div class="col-md-12">
+					<div class="panel panel-warning">
+						<h4 class="panel-heading text-center">
+							<strong>Menu Principal</strong>
+						</h4>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-sm-12 text-right">
+									<a class="btn btn-warning" th:href="@{/menus/create}">Agregar</a>
+								</div>
+								<div class="col-sm-12">
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th>Id</th>
+												<th>Nombre</th>
+												<th>Descripcion</th>
+												<th>Fecha</th>
+												<th colspan="2">Accion</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="menus: ${list_menus}">
+												<td th:text="${menus.idMenus}"></td>
+												<td th:text="${menus.nombre}"></td>
+												<td th:text="${menus.descripcion}"></td>
+												<td th:text="${menus.fecha}"></td>
+												<td>
+													<a th:href="@{/menus/view/{id} (id=${menus.idMenus})}" class="btn btn-success btn-sm" role="button" title="Editar">
+														<i class="fa fa-refresh" aria-hidden="true"></i>
+													</a> 
+													<a th:href="@{/menus/delete/{id} (id=${menus.idMenus})}" onclick="return confirm('¿Estas seguro de eliminar?')" class="btn btn-danger btn-sm" role="button" title="Eliminar"> 
+														<i class="fa fa-trash"aria-hidden="true"></i>
+													</a>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+
+									<nav aria-label="Pagination"
+										th:if="${list_menus.totalPages gt 0}">
+										<ul class="pagination justify-content-center font-weight-bold">
+											<li class="page-item"
+												th:classappend="${list_menus.number eq 0} ? 'disabled'">
+												<a class="page-link"
+												th:href="@{/menus/index(page=${list_menus.number - 1})}"
+												aria-label="Previous" title="Previous Page"
+												data-toggle="tooltip"
+												th:disabled="${list_menus.number eq 0}"> <span
+													aria-hidden="true">&laquo;</span>
+											</a>
+											</li>
+											<li class="page-item"
+												th:classappend="${i eq list_menus.number + 1} ? 'active'"
+												th:each="i : ${#numbers.sequence( 1, list_menus.totalPages, 1)}">
+												<a class="page-link"
+												th:href="@{/menus/index?page={id}(id=${i - 1})}"
+												th:text="${i}" th:title="${'Pagina '+ i}"
+												data-toggle="tooltip"></a>
+											</li>
+											<li class="page-item"
+												th:classappend="${list_menus.number + 1 eq list_menus.totalPages} ? 'disabled'">
+												<a class="page-link"
+												th:href="@{/menus/index(page=${list_menus.number + 1})}"
+												aria-label="Next" title="Next Page" data-toggle="tooltip"
+												th:disabled="${list_menus.number + 1 eq list_menus.totalPages}">
+													<span aria-hidden="true">&raquo;</span>
+											</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			
-				</section>
+		</div>
+	</section>
 	<footer th:insert="fragments/footer :: footer"> </footer>
 </body>
 </html>

@@ -425,7 +425,7 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
     price Start
 --*/
 #price {
-  padding: 70px 0px;
+  padding: 10px 0px;
 }
 #price .block > p {
   color: #9D9D9D;

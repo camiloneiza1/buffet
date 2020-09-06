@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html class="no-js" xmlns:th="http://thymeleaf.org">
+<head th:insert="fragments/head :: head">
+</head>
+<body>
+	<!--
+	header-img start 
+	============================== -->
+	<section id="hero-area">
+		<img class="img-responsive" th:src="@{/images/header.jpg}" alt="">
+	</section>
+	<header th:insert="fragments/menu :: menu-principal"> </header>
+
+	<div class="container">
+		<div clas="row">
+			<div class="col-md-12">
+				<div class="panel panel-warning">
+					<h4 class="panel-heading text-center">
+						<strong>Menu Principal</strong>
+					</h4>
+					<div class="panel-body">
+						<form th:action="@{/menus/detmenus/save}" method="post" th:object="${detMenus}">
+							<div th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
+								role="alert">
+								¡Lista de errores al procesar el formulario!
+								<ul>
+									<li th:each="err : ${#fields.errors('*')}" th:text="${err}" />
+								</ul>
+							</div>
+							<div class="row">
+								<div class="col-md-3">
+									<div class="form-group">
+										<input type="hidden" th:field="*{iddetMenus}">
+										<input type="hidden" th:field="*{menus.idMenus}">
+										<label for="nombre">Comida</label> 
+										<select class="form-control" name="comida" th:field="*{comidas.idComidas}" id="comida">
+											<option th:each= "comida : ${comidas}" th:value="${comida.idComidas}" th:text="${comida.nombre}"></option>
+										</select>
+										
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="descripcion">Cantidad</label> <input
+											type="number" class="form-control" th:field="*{cantidad}"
+											id="cantidad" name="cantidad"
+											placeholder="Cantidad de porciones" required="required">
+									</div>
+								</div>
+							</div>
+							<button type="submit" class="btn btn-primary">Guardar</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer th:insert="fragments/footer :: footer"> </footer>
+</body>
+</html>
