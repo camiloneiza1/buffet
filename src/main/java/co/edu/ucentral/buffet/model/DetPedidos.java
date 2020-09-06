@@ -27,8 +27,8 @@ public class DetPedidos {
     private List<DetPedidosHasComidas> dPedidosHasComidas;
 
     @ManyToOne
-    @JoinColumn (name = "idPlatos")
-    private Platos platos;
+    @JoinColumn (name = "idMenus")
+    private Menus menus;
 
     @ManyToOne
     @JoinColumn (name = "idPedidos")
@@ -90,16 +90,17 @@ public class DetPedidos {
     public void setDPedidosHasComidas(List<DetPedidosHasComidas> dPedidosHasComidas) {
         this.dPedidosHasComidas = dPedidosHasComidas;
     }
+    
 
-    public Platos getPlatos() {
-        return this.platos;
-    }
+    public Menus getMenus() {
+		return menus;
+	}
 
-    public void setPlatos(Platos platos) {
-        this.platos = platos;
-    }
+	public void setMenus(Menus menus) {
+		this.menus = menus;
+	}
 
-    public Pedidos getPedidos() {
+	public Pedidos getPedidos() {
         return this.pedidos;
     }
 
@@ -107,18 +108,12 @@ public class DetPedidos {
         this.pedidos = pedidos;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-            " iddetPedidos='" + getIddetPedidos() + "'" +
-            ", cantidad='" + getCantidad() + "'" +
-            ", precioUnitario='" + getPrecioUnitario() + "'" +
-            ", costoAdicionales='" + getCostoAdicionales() + "'" +
-            ", costoTotal='" + getCostoTotal() + "'" +
-            ", observaciones='" + getObservaciones() + "'" +
-            ", dPedidosHasComidas='" + getDPedidosHasComidas() + "'" +
-            ", platos='" + getPlatos() + "'" +
-            ", pedidos='" + getPedidos() + "'" +
-            "}";
-    }
+	@Override
+	public String toString() {
+		return "DetPedidos [iddetPedidos=" + iddetPedidos + ", cantidad=" + cantidad + ", precioUnitario="
+				+ precioUnitario + ", costoAdicionales=" + costoAdicionales + ", costoTotal=" + costoTotal
+				+ ", observaciones=" + observaciones + ", dPedidosHasComidas=" + dPedidosHasComidas + ", menus=" + menus
+				+ ", pedidos=" + pedidos + "]";
+	}
+
 }

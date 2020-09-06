@@ -35,8 +35,6 @@ public class Pedidos {
     @JoinColumn (name = "idClientes")
 	private Clientes clientes;
 
-	@OneToMany (mappedBy = "pedidos")
-    private List<PedidosHasComidas> pedidosHasComidas; 
 	
 
 	public Integer getIdPedidos() {
@@ -143,14 +141,6 @@ public class Pedidos {
 		this.clientes = clientes;
 	}
 
-	public List<PedidosHasComidas> getPedidosHasComidas() {
-		return this.pedidosHasComidas;
-	}
-
-	public void setPedidosHasComidas(List<PedidosHasComidas> pedidosHasComidas) {
-		this.pedidosHasComidas = pedidosHasComidas;
-	}
-
 	@Override
 	public String toString() {
 		return "{" +
@@ -167,7 +157,6 @@ public class Pedidos {
 			", valorAdicionales='" + getValorAdicionales() + "'" +
 			", valorTotal='" + getValorTotal() + "'" +
 			", clientes='" + getClientes() + "'" +
-			", pedidosHasComidas='" + getPedidosHasComidas() + "'" +
 			"}";
 	}
 }

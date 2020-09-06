@@ -21,8 +21,6 @@ public class CategoriasComida {
     @OneToMany (mappedBy = "categoriasComida")
     private List<Comidas> comidas;
 
-    @OneToMany (mappedBy = "categoriasComida")
-    private List<DetPlatos> dPlatos;
     
 
     public Integer getIdCategoriasComida() {
@@ -58,13 +56,6 @@ public class CategoriasComida {
         this.comidas = comidas;
     }
 
-    public List<DetPlatos> getDPlatos() {
-        return this.dPlatos;
-    }
-
-    public void setDPlatos(List<DetPlatos> dPlatos) {
-        this.dPlatos = dPlatos;
-    }
 
     @Override
     public String toString() {
@@ -73,7 +64,6 @@ public class CategoriasComida {
             ", nombre='" + getNombre() + "'" +
             ", descripcion='" + getDescripcion() + "'" +
             ", comidas='" + getComidas() + "'" +
-            ", dPlatos='" + getDPlatos() + "'" +
             "}";
     }
 

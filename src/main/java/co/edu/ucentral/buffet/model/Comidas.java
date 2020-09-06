@@ -32,10 +32,6 @@ public class Comidas {
     @OneToMany (mappedBy = "comidas")
     private List<DetPedidosHasComidas> dPedidosHasComidas;
 
-    @OneToMany (mappedBy = "comidas")
-    private List<PedidosHasComidas> pedidosHasComidas;
-
-
     public Integer getIdComidas() {
         return this.idComidas;
     }
@@ -101,14 +97,6 @@ public class Comidas {
         this.dPedidosHasComidas = dPedidosHasComidas;
     }
 
-    public List<PedidosHasComidas> getPedidosHasComidas() {
-        return this.pedidosHasComidas;
-    }
-
-    public void setPedidosHasComidas(List<PedidosHasComidas> pedidosHasComidas) {
-        this.pedidosHasComidas = pedidosHasComidas;
-    }
-
     @Override
     public String toString() {
         return "{" +
@@ -120,7 +108,6 @@ public class Comidas {
             ", categoriasComida='" + getCategoriasComida() + "'" +
             ", dMenus='" + getDMenus() + "'" +
             ", dPedidosHasComidas='" + getDPedidosHasComidas() + "'" +
-            ", pedidosHasComidas='" + getPedidosHasComidas() + "'" +
             "}";
     }
 
