@@ -48,5 +48,10 @@ public class UsuariosServiceImplJpa implements UsuariosService {
 	public Page<Usuarios> paginarUsuarios(Pageable page) {
 		return repo.findAll(page);
 	}
+	
+	@Override
+	public Usuarios buscarPorUserName(String username) {
+		return repo.findByUsername(username);
+	}
 
 }

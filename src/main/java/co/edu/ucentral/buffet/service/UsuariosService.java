@@ -12,5 +12,6 @@ public interface UsuariosService {
 	public Usuarios buscarPorId(int idUsuario);
 	public void guardar(Usuarios usuario);
 	public void borrar(int idUsuario);
+	public Usuarios buscarPorUserName(String username);
 	public Page<Usuarios> paginarUsuarios(Pageable page);
 }
