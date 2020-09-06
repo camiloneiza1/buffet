@@ -1,11 +1,13 @@
 package co.edu.ucentral.buffet.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,7 +20,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import co.edu.ucentral.buffet.model.Usuarios;
+import co.edu.ucentral.buffet.model.Menus;
 import co.edu.ucentral.buffet.model.Perfiles;
+import co.edu.ucentral.buffet.service.MenusService;
 import co.edu.ucentral.buffet.service.UsuariosService;
 
 @Controller
@@ -52,8 +56,8 @@ public class HomeController {
 	
 	@GetMapping("/")
 	public String mostrarHome(Model model) {
-		model.addAttribute("mensaje", "Bienvenido a Bolsa de Empleo");
-		model.addAttribute("fecha", new Date());
+		List<Menus> lista = menuService.listarMenus();
+		model.addAttribute("list_menus", lista);
 		return "index";
 	}
 	
