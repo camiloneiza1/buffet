@@ -1,7 +1,6 @@
 package co.edu.ucentral.buffet.model;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -143,20 +141,10 @@ public class Pedidos {
 
 	@Override
 	public String toString() {
-		return "{" +
-			" idPedidos='" + getIdPedidos() + "'" +
-			", direccion='" + getDireccion() + "'" +
-			", telefono='" + getTelefono() + "'" +
-			", formaPago='" + getFormaPago() + "'" +
-			", fechaSolicitud='" + getFechaSolicitud() + "'" +
-			", fechaEntrega='" + getFechaEntrega() + "'" +
-			", estado='" + getEstado() + "'" +
-			", observaciones='" + getObservaciones() + "'" +
-			", valorDomicilio='" + getValorDomicilio() + "'" +
-			", valorPlatos='" + getValorPlatos() + "'" +
-			", valorAdicionales='" + getValorAdicionales() + "'" +
-			", valorTotal='" + getValorTotal() + "'" +
-			", clientes='" + getClientes() + "'" +
-			"}";
+		return "Pedidos [idPedidos=" + idPedidos + ", direccion=" + direccion + ", telefono=" + telefono
+				+ ", formaPago=" + formaPago + ", fechaSolicitud=" + fechaSolicitud + ", fechaEntrega=" + fechaEntrega
+				+ ", estado=" + estado + ", observaciones=" + observaciones + ", valorDomicilio=" + valorDomicilio
+				+ ", valorPlatos=" + valorPlatos + ", valorAdicionales=" + valorAdicionales + ", valorTotal="
+				+ valorTotal + ", clientes=" + clientes + "]";
 	}
 }
