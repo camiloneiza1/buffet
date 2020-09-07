@@ -63,6 +63,14 @@ public class CarritoController {
 	public String mostrarSeleccionarComidas(@PathVariable("idMenu") int idMenu, Model model, HttpServletRequest request) {
 		Menus menu = menuService.buscarPorId(idMenu);
 		model.addAttribute("menu",menu);
+		
+		DetPedidos detped = new DetPedidos();
+    	detped.setCantidad(1);
+    	detped.setMenus(menu);
+    	detped.setPedidos(null);
+    	
+    	model.addAttribute("detPedido",detped);
+    	
 		return "carrito/seleccionarComidas";
 	}
 	

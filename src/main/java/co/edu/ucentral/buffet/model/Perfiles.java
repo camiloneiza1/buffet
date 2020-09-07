@@ -10,7 +10,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="usuarios")
+@Table(name="Perfiles")
 public class Perfiles {
     @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

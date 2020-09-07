@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="pedidos")
+@Table(name="Pedidos")
 public class Pedidos {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -26,15 +26,13 @@ public class Pedidos {
 	private String observaciones;
 	private double valorDomicilio;
 	private double valorPlatos;
-	private double valorAdicionales;
 	private double valorTotal;
 
 	@ManyToOne
-    @JoinColumn (name = "idClientes")
-	private Clientes clientes;
+    @JoinColumn (name = "idUsuario")
+	private Usuarios usuarios;
 
 	
-
 	public Integer getIdPedidos() {
 		return this.idPedidos;
 	}
@@ -115,14 +113,6 @@ public class Pedidos {
 		this.valorPlatos = valorPlatos;
 	}
 
-	public double getValorAdicionales() {
-		return this.valorAdicionales;
-	}
-
-	public void setValorAdicionales(double valorAdicionales) {
-		this.valorAdicionales = valorAdicionales;
-	}
-
 	public double getValorTotal() {
 		return this.valorTotal;
 	}
@@ -131,12 +121,12 @@ public class Pedidos {
 		this.valorTotal = valorTotal;
 	}
 
-	public Clientes getClientes() {
-		return this.clientes;
+	public Usuarios getUsuarios() {
+		return usuarios;
 	}
 
-	public void setClientes(Clientes clientes) {
-		this.clientes = clientes;
+	public void setUsuarios(Usuarios usuarios) {
+		this.usuarios = usuarios;
 	}
 
 	@Override
@@ -144,7 +134,9 @@ public class Pedidos {
 		return "Pedidos [idPedidos=" + idPedidos + ", direccion=" + direccion + ", telefono=" + telefono
 				+ ", formaPago=" + formaPago + ", fechaSolicitud=" + fechaSolicitud + ", fechaEntrega=" + fechaEntrega
 				+ ", estado=" + estado + ", observaciones=" + observaciones + ", valorDomicilio=" + valorDomicilio
-				+ ", valorPlatos=" + valorPlatos + ", valorAdicionales=" + valorAdicionales + ", valorTotal="
-				+ valorTotal + ", clientes=" + clientes + "]";
+				+ ", valorPlatos=" + valorPlatos + ", valorTotal=" + valorTotal + ", usuarios=" + usuarios + "]";
 	}
+
+	
+
 }

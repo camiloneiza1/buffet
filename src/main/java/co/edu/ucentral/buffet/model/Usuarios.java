@@ -10,11 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="usuarios")
+@Table(name="Usuarios")
 public class Usuarios {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -30,12 +29,9 @@ public class Usuarios {
 	private String telefono;
 	private String direccion;
 	private String ciudad;
-
-	@OneToMany (mappedBy = "usuarios")
-	private List<Clientes> clientes;
 	
 	@ManyToMany
-	@JoinTable(name="usuarioperfil",joinColumns=@JoinColumn(name="idUsuario"), inverseJoinColumns=@JoinColumn(name="idPerfil"))
+	@JoinTable(name="UsuarioPerfil",joinColumns=@JoinColumn(name="idUsuario"), inverseJoinColumns=@JoinColumn(name="idPerfil"))
 	private List<Perfiles> perfiles;
 
 	public Integer getIdUsuarios() {
@@ -140,14 +136,6 @@ public class Usuarios {
 		this.nombres = nombres;
 	}
 
-	public List<Clientes> getClientes() {
-		return this.clientes;
-	}
-
-	public void setClientes(List<Clientes> clientes) {
-		this.clientes = clientes;
-	}
-
 	public List<Perfiles> getPerfiles() {
 		return perfiles;
 	}
@@ -168,7 +156,8 @@ public class Usuarios {
 		return "Usuarios [idUsuarios=" + idUsuarios + ", nombres=" + nombres + ", apellidos=" + apellidos + ", email="
 				+ email + ", username=" + username + ", password=" + password + ", estatus=" + estatus
 				+ ", tipoDocumento=" + tipoDocumento + ", numeroDocumento=" + numeroDocumento + ", telefono=" + telefono
-				+ ", direccion=" + direccion + ", ciudad=" + ciudad + ", clientes=" + clientes + ", perfiles="
-				+ perfiles + "]";
+				+ ", direccion=" + direccion + ", ciudad=" + ciudad + ", perfiles=" + perfiles + "]";
 	}
+
+	
 }

@@ -31,7 +31,7 @@
                                 <li><a th:href="@{/#hero-area}">Inicio</a></li>
                                 <li><a th:href="@{/#blog}">Blog</a></li>
                                 <li sec:authorize="isAnonymous()"><a th:href="@{/#price}">Menu</a></li>
-                                <li><a th:href="@{/pedido}">Tu Pedido</a></li>
+                                <li sec:authorize="hasAnyAuthority('USUARIO')"><a th:href="@{/pedido}">Tu Pedido</a></li>
                                 <li sec:authorize="hasAnyAuthority('ADMINISTRADOR')" ><a th:href="@{/menus/index}">Menus</a></li>
                                 <li sec:authorize="hasAnyAuthority('ADMINISTRADOR')" ><a th:href="@{/comidas/index}">Comidas</a></li>
                                 <li sec:authorize="isAnonymous()"><a class="btn btn-secundary" th:href="@{/login}">Ingresar</a></li>
