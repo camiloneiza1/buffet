@@ -19,20 +19,14 @@
 						<strong>Menu Principal</strong>
 					</h4>
 					<div class="panel-body">
-						<form action="#" method="post" th:object="${menu}">
-							<div th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
-								role="alert">
-								¡Lista de errores al procesar el formulario!
-								<ul>
-									<li th:each="err : ${#fields.errors('*')}" th:text="${err}" />
-								</ul>
-							</div>
+						<form action="#" method="post" th:object="${detPedidos}">
+							
 							<div class="row">
 								<div class="col-md-3">
 									<div class="form-group">
-										<input type="hidden" th:field="*{idMenus}"> <label
+										<input type="hidden" th:field="${menu.idMenus}"> <label
 											for="nombre">Nombre</label> <input type="text"
-											class="form-control" th:field="*{nombre}" id="nombre"
+											class="form-control" th:field="${menu.nombre}" id="nombre"
 											name="nombre" placeholder="Nombre del Menu"
 											required="required">
 									</div>
@@ -40,7 +34,7 @@
 								<div class="col-md-5">
 									<div class="form-group">
 										<label for="descripcion">Descripción</label> <input
-											type="text" class="form-control" th:field="*{descripcion}"
+											type="text" class="form-control" th:field="${menu.descripcion}"
 											id="descripcion" name="descripcion"
 											placeholder="Breve descripcion del menu" required="required">
 									</div>
@@ -49,11 +43,10 @@
 								<div class="col-md-3">
 									<div class="form-group">
 										<label for="precio">Precio</label> <input type="number"
-											class="form-control" th:field="*{precio}" id="precio"
+											class="form-control" th:field="${menu.precio}" id="precio"
 											name="precio" required="required">
 									</div>
 								</div>
-
 							</div>
 						</form>
 					</div>
@@ -70,19 +63,13 @@
 						<form th:action="@{/carrito/addDetPedido}" method="post">
 							<div class="row">
 								<div class="col-sm-12">
-									<table class="table table-striped">
-										<thead>
-											<tr>
-												<th>Comida</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr th:each="detmenu: ${menu.dMenus}">
-												<td th:text="${detmenu.comidas.nombre}"></td>
-												<td><input type="checkbox" name="seclect[]" th:value="${detmenu.comidas.idComidas}"></td>
-											</tr>
-										</tbody>
-									</table>
+									<select  id="select-paciente" size="5" multiple="multiple"  class="form-control" name="comidas">
+							            <option th:each="detmenu: ${menu.dMenus}"
+							                    th:value="${detmenu.comidas.idComidas}"
+							                    th:text="${detmenu.comidas.nombre + ' - ' + detmenu.comidas.descripcion}">
+							            </option>
+        							</select>
+									
 									<button class="btn btn-default" type="submit">Guardar</button>
 								</div>
 							</div>

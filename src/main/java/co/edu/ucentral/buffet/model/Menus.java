@@ -24,6 +24,9 @@ public class Menus {
     
     @OneToMany (mappedBy = "menus")
     private List<DetMenus> dMenus;
+    
+    @OneToMany (mappedBy = "menu")
+    private List<DetPedidos> dPedidos;
 
 	public Integer getIdMenus() {
 		return idMenus;
@@ -69,11 +72,26 @@ public class Menus {
 	public void setDMenus(List<DetMenus> dMenus) {
 		this.dMenus = dMenus;
 	}
+	
+	
+	public List<DetMenus> getdMenus() {
+		return dMenus;
+	}
+	public void setdMenus(List<DetMenus> dMenus) {
+		this.dMenus = dMenus;
+	}
+	public List<DetPedidos> getdPedidos() {
+		return dPedidos;
+	}
+	public void setdPedidos(List<DetPedidos> dPedidos) {
+		this.dPedidos = dPedidos;
+	}
 	@Override
 	public String toString() {
 		return "Menus [idMenus=" + idMenus + ", fecha=" + fecha + ", nombre=" + nombre + ", descripcion=" + descripcion
-				+ ", imagen=" + imagen + ", precio=" + precio + ", dMenus=" + dMenus + "]";
+				+ ", imagen=" + imagen + ", precio=" + precio + ", dMenus=" + dMenus + ", dPedidos=" + dPedidos + "]";
 	}
+	
 
 }
 

@@ -28,7 +28,7 @@ public class DetPedidos {
 
     @ManyToOne
     @JoinColumn (name = "idMenus")
-    private Menus menus;
+    private Menus menu;
 
     @ManyToOne
     @JoinColumn (name = "idPedidos")
@@ -92,12 +92,12 @@ public class DetPedidos {
     }
     
 
-    public Menus getMenus() {
-		return menus;
+	public Menus getMenu() {
+		return menu;
 	}
 
-	public void setMenus(Menus menus) {
-		this.menus = menus;
+	public void setMenu(Menus menu) {
+		this.menu = menu;
 	}
 
 	public Pedidos getPedidos() {
@@ -112,8 +112,10 @@ public class DetPedidos {
 	public String toString() {
 		return "DetPedidos [iddetPedidos=" + iddetPedidos + ", cantidad=" + cantidad + ", precioUnitario="
 				+ precioUnitario + ", costoAdicionales=" + costoAdicionales + ", costoTotal=" + costoTotal
-				+ ", observaciones=" + observaciones + ", dPedidosHasComidas=" + dPedidosHasComidas + ", menus=" + menus
+				+ ", observaciones=" + observaciones + ", dPedidosHasComidas=" + dPedidosHasComidas + ", menu=" + menu
 				+ ", pedidos=" + pedidos + "]";
 	}
+
+	
 
 }

@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import co.edu.ucentral.buffet.model.DetPedidos;
 import co.edu.ucentral.buffet.model.DetPedidosHasComidas;
 import co.edu.ucentral.buffet.model.Menus;
+import co.edu.ucentral.buffet.service.ComidasService;
 import co.edu.ucentral.buffet.service.MenusService;
 
 @Controller
@@ -24,6 +25,9 @@ public class CarritoController {
 
 	@Autowired
 	private MenusService menuService;
+	
+	@Autowired
+	private ComidasService comidaService;
 	
 	private List<DetPedidos> detPedidos = null;
 	
@@ -36,20 +40,34 @@ public class CarritoController {
 	}
 	
 	@RequestMapping(value="/addDetPedido", method=RequestMethod.POST)
-	public String addMenuCarrito(Model model, HttpServletRequest request, RedirectAttributes attributes, DetPedidosHasComidas detPedidosHasComidas) {
+	public String addMenuCarrito(Model model, HttpServletRequest request, RedirectAttributes attributes) {
 		
-		System.out.println(detPedidosHasComidas.toString());
 		detPedidos = this.obtenerCarrito(request);
 		menuTemp = this.obtenerMenu(request);
 		
 		if (menuTemp.getIdMenus() != null) {
 			if (detPedidos != null) {
 				menuTemp.setDMenus(null);
+	
 		    	DetPedidos detped = new DetPedidos();
 		    	detped.setCantidad(1);
-		    	detped.setMenus(menuTemp);
+		    	detped.setMenu(menuTemp);
 		    	detped.setPedidos(null);
+		    	
+		    	List<DetPedidosHasComidas> comidas_detped = null;
+				
+				String[] comidas = request.getParameterValues("comidas");
+				
+				for (String comida : comidas) {
+					DetPedidosHasComidas obj_det_comidas = new DetPedidosHasComidas();
+					obj_det_comidas.setComidas(comidaService.buscarPorId(Integer.parseInt(comida)));
+					obj_det_comidas.setDPedidos(detped);
+					comidas_detped.add(obj_det_comidas);
+				}
+				detped.setDPedidosHasComidas(comidas_detped);
 		    	detPedidos.add(detped);
+		    	
+		    	
 			}else {
 				detPedidos = new LinkedList<DetPedidos>();
 			}
@@ -66,7 +84,7 @@ public class CarritoController {
 		
 		DetPedidos detped = new DetPedidos();
     	detped.setCantidad(1);
-    	detped.setMenus(menu);
+    	detped.setMenu(menu);
     	detped.setPedidos(null);
     	
     	model.addAttribute("detPedido",detped);
@@ -89,7 +107,7 @@ public class CarritoController {
 	    request.getSession().setAttribute("menuCrr", menu);
 	    attributes.addAttribute("idMenu", menu.getIdMenus());
 		return "redirect:/carrito/selectComida/{idMenu}";
-	}
+	}	
 	
 	private Menus obtenerMenu(HttpServletRequest request) {
 	    Menus menu = (Menus) request.getSession().getAttribute("menuCrr");
