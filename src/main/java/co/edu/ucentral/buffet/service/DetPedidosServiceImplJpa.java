@@ -34,8 +34,8 @@ public class DetPedidosServiceImplJpa implements DetPedidosService {
 	}
 
 	@Override
-	public void guardar(DetPedidos detPedido) {
-		repo.save(detPedido);
+	public DetPedidos guardar(DetPedidos detPedido) {
+		return repo.save(detPedido);
 	}
 
 	@Override

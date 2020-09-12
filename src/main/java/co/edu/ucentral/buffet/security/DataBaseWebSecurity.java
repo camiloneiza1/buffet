@@ -34,7 +34,9 @@ public class DataBaseWebSecurity extends WebSecurityConfigurerAdapter{
 				"/images/**",
 				"/tinymce/**",
 				"/carrito/**").permitAll()
-		.antMatchers("/menus/**").hasAnyAuthority("ADMINISTRADOR")
+		.antMatchers("/menus/**",
+					"/comidas/**").hasAnyAuthority("ADMINISTRADOR")
+		.antMatchers("/pedidos/**").hasAnyAuthority("USUARIO")
 		.antMatchers(
 				"/",
 				"/bcrypt/**",

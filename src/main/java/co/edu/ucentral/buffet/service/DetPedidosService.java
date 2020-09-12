@@ -10,7 +10,7 @@ import co.edu.ucentral.buffet.model.DetPedidos;
 public interface DetPedidosService {
 	public List<DetPedidos> listarDetPedidos();
 	public DetPedidos buscarPorId(int idDetPedido);
-	public void guardar(DetPedidos detPedido);
+	public DetPedidos guardar(DetPedidos detPedido);
 	public void borrar(int idDetPedido);
 	public Page<DetPedidos> paginarDetPedidos(Pageable page);
 }

@@ -34,8 +34,8 @@ public class PedidosServiceImplJpa implements PedidosService {
 	}
 
 	@Override
-	public void guardar(final Pedidos pedido) {
-		repo.save(pedido);
+	public Pedidos guardar(final Pedidos pedido) {
+		return repo.save(pedido);
 	}
 
 	@Override
