@@ -19,70 +19,79 @@
 				<div class="col-md-12">
 					<div class="panel panel-warning">
 						<h4 class="panel-heading text-center">
-							<strong>Comidas</strong>
+							<strong>Pedidos</strong>
 						</h4>
 						<div class="panel-body">
 							<div class="row">
-								<div class="col-sm-12 text-right">
-									<a class="btn btn-warning" th:href="@{/comidas/create}">Agregar</a>
-								</div>
 								<div class="col-sm-12">
 									<table class="table table-striped">
 										<thead>
 											<tr>
 												<th>Id</th>
+												<th>Direccion</th>
 												<th>Usuario</th>
-												<th>Dirección</th>
 												<th>Telefono</th>
 												<th>Forma de Pago</th>
+												<th>Fecha Solicitud</th>
+												<th>Fecaha de Entrega</th>
+												<th>Estado</th>
+												<th>Observaciones</th>
+												<th>Valor Domicilio</th>
+												<th>Valor Platos</th>
+												<th>Valor Total</th>
 												<th colspan="2">Accion</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr th:each="comidas: ${list_comidas}">
-												<td th:text="${comidas.idComidas}"></td>
-												<td th:text="${comidas.nombre}"></td>
-												<td th:text="${comidas.descripcion}"></td>
-												<td th:text="${comidas.precio}"></td>
+											<tr th:each="pedidos: ${list_pedidos}">
+												<td th:text="${pedidos.idPedidos}"></td>
+												<td th:text="${pedidos.usuarios.idUsuarios}"></td>
+												<td th:text="${pedidos.direccion}"></td>
+												<td th:text="${pedidos.telefono}"></td>
+												<td th:text="${pedidos.formaPago}"></td>
+												<td th:text="${pedidos.fechaSolicitud}"></td>
+												<td th:text="${pedidos.fechaEntrega}"></td>
+												<td th:text="${pedidos.estado}"></td>
+												<td th:text="${pedidos.observaciones}"></td>
+												<td th:text="${pedidos.valorDomicilio}"></td>
+												<td th:text="${pedidos.valorPlatos}"></td>
+												<td th:text="${pedidos.valorTotal}"></td>
 												<td>
-													<a th:href="@{/comidas/view/{id} (id=${comidas.idComidas})}" class="btn btn-success btn-sm" role="button" title="Editar">
-														<i class="fa fa-refresh" aria-hidden="true"></i>
+													<a th:href="@{/pedidos/factura/{id} (id=${pedidos.idPedidos})}" class="btn btn-success btn-sm" target="_blank" role="button" title="Factura">
+														<i class="fa fa-print" aria-hidden="true"></i>
 													</a> 
-													<a th:href="@{/comidas/delete/{id} (id=${comidas.idComidas})}" onclick="return confirm('¿Estas seguro de eliminar?')" class="btn btn-danger btn-sm" role="button" title="Eliminar"> 
-														<i class="fa fa-trash"aria-hidden="true"></i>
-													</a>
 												</td>
 											</tr>
 										</tbody>
 									</table>
 
 									<nav aria-label="Pagination"
-										th:if="${list_comidas.totalPages gt 0}">
+										th:if="${list_pedidos.totalPages gt 0}">
 										<ul class="pagination justify-content-center font-weight-bold">
 											<li class="page-item"
-												th:classappend="${list_comidas.number eq 0} ? 'disabled'">
+												th:classappend="${list_pedidos.number eq 0} ? 'disabled'">
 												<a class="page-link"
-												th:href="@{/menus/index(page=${list_comidas.number - 1})}"
+												th:href="@{/pedidos/index(page=${list_pedidos.number - 1})}"
 												aria-label="Previous" title="Previous Page"
 												data-toggle="tooltip"
-												th:disabled="${list_comidas.number eq 0}"> <span
+												th:disabled="${list_pedidos.number eq 0}"> <span
 													aria-hidden="true">&laquo;</span>
 											</a>
 											</li>
 											<li class="page-item"
-												th:classappend="${i eq list_comidas.number + 1} ? 'active'"
-												th:each="i : ${#numbers.sequence( 1, list_comidas.totalPages, 1)}">
+												th:classappend="${i eq list_pedidos.number + 1} ? 'active'"
+												th:each="i : ${#numbers.sequence( 1, list_pedidos.totalPages, 1)}">
 												<a class="page-link"
-												th:href="@{/comidas/index?page={id}(id=${i - 1})}"
+												th:href="@{/pedidos/index?page={id}(id=${i - 1})}"
 												th:text="${i}" th:title="${'Pagina '+ i}"
 												data-toggle="tooltip"></a>
 											</li>
 											<li class="page-item"
-												th:classappend="${list_comidas.number + 1 eq list_comidas.totalPages} ? 'disabled'">
+												th:classappend="${list_pedidos.number + 1 eq list_pedidos.totalPages} ? 'disabled'">
 												<a class="page-link"
-												th:href="@{/comidas/index(page=${list_comidas.number + 1})}"
+												th:href="@{/pedidos/index(page=${list_pedidos.number + 1})}"
 												aria-label="Next" title="Next Page" data-toggle="tooltip"
-												th:disabled="${list_comidas.number + 1 eq list_comidas.totalPages}">
+												th:disabled="${list_pedidos.number + 1 eq list_pedidos.totalPages}">
 													<span aria-hidden="true">&raquo;</span>
 											</a>
 											</li>
