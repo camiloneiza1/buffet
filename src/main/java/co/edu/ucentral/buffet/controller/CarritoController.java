@@ -33,10 +33,11 @@ public class CarritoController {
 	
 	private Menus menuTemp = null;
 	
-	@RequestMapping(value="/", method=RequestMethod.GET)
+	@RequestMapping(value="/show", method=RequestMethod.GET)
 	public String mostrarCarrito(Model model, HttpServletRequest request) {
-		List<DetPedidos> pedido = this.obtenerCarrito(request);
-		return "index";
+		List<DetPedidos> detpedido = this.obtenerCarrito(request);
+		model.addAttribute("detPedido", detpedido);
+		return "carrito/Mostrar";
 	}
 	
 	@RequestMapping(value="/addDetPedido", method=RequestMethod.POST)
@@ -54,7 +55,7 @@ public class CarritoController {
 		    	detped.setMenu(menuTemp);
 		    	detped.setPedidos(null);
 		    	
-		    	List<DetPedidosHasComidas> comidas_detped = null;
+		    	List<DetPedidosHasComidas> comidas_detped = new LinkedList();
 				
 				String[] comidas = request.getParameterValues("comidas");
 				
@@ -74,7 +75,7 @@ public class CarritoController {
 		}
 		 this.guardarCarrito(detPedidos, request);
 		 attributes.addAttribute("idMenu", menuTemp.getIdMenus());
-		 return "redirect:/carrito/selectComida/{idMenu}";
+		 return "redirect:/#price";
 	}
 	
 	@RequestMapping(value="/selectComida/{idMenu}", method=RequestMethod.GET)
@@ -108,6 +109,7 @@ public class CarritoController {
 	    attributes.addAttribute("idMenu", menu.getIdMenus());
 		return "redirect:/carrito/selectComida/{idMenu}";
 	}	
+	
 	
 	private Menus obtenerMenu(HttpServletRequest request) {
 	    Menus menu = (Menus) request.getSession().getAttribute("menuCrr");
