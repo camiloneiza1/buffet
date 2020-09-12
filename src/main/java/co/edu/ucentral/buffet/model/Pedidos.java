@@ -1,6 +1,7 @@
 package co.edu.ucentral.buffet.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -31,6 +33,9 @@ public class Pedidos {
 	@ManyToOne
     @JoinColumn (name = "idUsuario")
 	private Usuarios usuarios;
+	
+	@OneToMany (mappedBy = "pedidos")
+    private List<DetPedidos> dPedidos;
 
 	
 	public Integer getIdPedidos() {
@@ -128,13 +133,24 @@ public class Pedidos {
 	public void setUsuarios(Usuarios usuarios) {
 		this.usuarios = usuarios;
 	}
+	
+	
+
+	public List<DetPedidos> getdPedidos() {
+		return dPedidos;
+	}
+
+	public void setdPedidos(List<DetPedidos> dPedidos) {
+		this.dPedidos = dPedidos;
+	}
 
 	@Override
 	public String toString() {
 		return "Pedidos [idPedidos=" + idPedidos + ", direccion=" + direccion + ", telefono=" + telefono
 				+ ", formaPago=" + formaPago + ", fechaSolicitud=" + fechaSolicitud + ", fechaEntrega=" + fechaEntrega
 				+ ", estado=" + estado + ", observaciones=" + observaciones + ", valorDomicilio=" + valorDomicilio
-				+ ", valorPlatos=" + valorPlatos + ", valorTotal=" + valorTotal + ", usuarios=" + usuarios + "]";
+				+ ", valorPlatos=" + valorPlatos + ", valorTotal=" + valorTotal + ", usuarios=" + usuarios
+				+ ", dPedidos=" + dPedidos + "]";
 	}
 
 	

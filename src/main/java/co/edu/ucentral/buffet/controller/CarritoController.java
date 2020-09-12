@@ -93,7 +93,7 @@ public class CarritoController {
 		return "carrito/seleccionarComidas";
 	}
 	
-	private List<DetPedidos> obtenerCarrito(HttpServletRequest request) {
+	public List<DetPedidos> obtenerCarrito(HttpServletRequest request) {
 	    List<DetPedidos> carrito = (List<DetPedidos>) request.getSession().getAttribute("detPedido");
 	    return carrito;
 	}
