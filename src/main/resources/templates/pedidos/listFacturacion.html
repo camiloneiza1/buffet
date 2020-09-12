@@ -45,8 +45,8 @@
 										<tbody>
 											<tr th:each="pedidos: ${list_pedidos}">
 												<td th:text="${pedidos.idPedidos}"></td>
-												<td th:text="${pedidos.usuarios.idUsuarios}"></td>
 												<td th:text="${pedidos.direccion}"></td>
+												<td th:text="${pedidos.usuarios.nombres + ' ' + pedidos.usuarios.apellidos}"></td>
 												<td th:text="${pedidos.telefono}"></td>
 												<td th:text="${pedidos.formaPago}"></td>
 												<td th:text="${pedidos.fechaSolicitud}"></td>

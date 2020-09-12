@@ -98,6 +98,12 @@ public class CarritoController {
 	    return carrito;
 	}
 	
+	@RequestMapping(value="/delete", method=RequestMethod.GET)
+	public String limpiarCarrito(HttpServletRequest request, RedirectAttributes attributes) {
+		request.getSession().setAttribute("detPedido", null);
+		return "redirect:/#price";
+	}
+	
 	@RequestMapping(value="/addMenu/{id}", method=RequestMethod.GET)
 	public String guardarMenu(@PathVariable("id") int idMenu, Model model, HttpServletRequest request, RedirectAttributes attributes) {
 		Menus menu = menuService.buscarPorId(idMenu);
