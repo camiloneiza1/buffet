@@ -19,35 +19,36 @@
 				<div class="col-md-12">
 					<div class="panel panel-warning">
 						<h4 class="panel-heading text-center">
-							<strong>Menu Principal</strong>
+							<strong>Comidas</strong>
 						</h4>
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-sm-12 text-right">
-									<a class="btn btn-warning" th:href="@{/menus/create}">Agregar</a>
+									<a class="btn btn-warning" th:href="@{/comidas/create}">Agregar</a>
 								</div>
 								<div class="col-sm-12">
 									<table class="table table-striped">
 										<thead>
 											<tr>
 												<th>Id</th>
-												<th>Nombre</th>
-												<th>Descripcion</th>
-												<th>Fecha</th>
+												<th>Usuario</th>
+												<th>Dirección</th>
+												<th>Telefono</th>
+												<th>Forma de Pago</th>
 												<th colspan="2">Accion</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr th:each="menus: ${list_menus}">
-												<td th:text="${menus.idMenus}"></td>
-												<td th:text="${menus.nombre}"></td>
-												<td th:text="${menus.descripcion}"></td>
-												<td th:text="${menus.fecha}"></td>
+											<tr th:each="comidas: ${list_comidas}">
+												<td th:text="${comidas.idComidas}"></td>
+												<td th:text="${comidas.nombre}"></td>
+												<td th:text="${comidas.descripcion}"></td>
+												<td th:text="${comidas.precio}"></td>
 												<td>
-													<a th:href="@{/menus/view/{id} (id=${menus.idMenus})}" class="btn btn-success btn-sm" role="button" title="Editar">
+													<a th:href="@{/comidas/view/{id} (id=${comidas.idComidas})}" class="btn btn-success btn-sm" role="button" title="Editar">
 														<i class="fa fa-refresh" aria-hidden="true"></i>
 													</a> 
-													<a th:href="@{/menus/delete/{id} (id=${menus.idMenus})}" onclick="return confirm('Â¿Estas seguro de eliminar?')" class="btn btn-danger btn-sm" role="button" title="Eliminar"> 
+													<a th:href="@{/comidas/delete/{id} (id=${comidas.idComidas})}" onclick="return confirm('¿Estas seguro de eliminar?')" class="btn btn-danger btn-sm" role="button" title="Eliminar"> 
 														<i class="fa fa-trash"aria-hidden="true"></i>
 													</a>
 												</td>
@@ -56,32 +57,32 @@
 									</table>
 
 									<nav aria-label="Pagination"
-										th:if="${list_menus.totalPages gt 0}">
+										th:if="${list_comidas.totalPages gt 0}">
 										<ul class="pagination justify-content-center font-weight-bold">
 											<li class="page-item"
-												th:classappend="${list_menus.number eq 0} ? 'disabled'">
+												th:classappend="${list_comidas.number eq 0} ? 'disabled'">
 												<a class="page-link"
-												th:href="@{/menus/index(page=${list_menus.number - 1})}"
+												th:href="@{/menus/index(page=${list_comidas.number - 1})}"
 												aria-label="Previous" title="Previous Page"
 												data-toggle="tooltip"
-												th:disabled="${list_menus.number eq 0}"> <span
+												th:disabled="${list_comidas.number eq 0}"> <span
 													aria-hidden="true">&laquo;</span>
 											</a>
 											</li>
 											<li class="page-item"
-												th:classappend="${i eq list_menus.number + 1} ? 'active'"
-												th:each="i : ${#numbers.sequence( 1, list_menus.totalPages, 1)}">
+												th:classappend="${i eq list_comidas.number + 1} ? 'active'"
+												th:each="i : ${#numbers.sequence( 1, list_comidas.totalPages, 1)}">
 												<a class="page-link"
-												th:href="@{/menus/index?page={id}(id=${i - 1})}"
+												th:href="@{/comidas/index?page={id}(id=${i - 1})}"
 												th:text="${i}" th:title="${'Pagina '+ i}"
 												data-toggle="tooltip"></a>
 											</li>
 											<li class="page-item"
-												th:classappend="${list_menus.number + 1 eq list_menus.totalPages} ? 'disabled'">
+												th:classappend="${list_comidas.number + 1 eq list_comidas.totalPages} ? 'disabled'">
 												<a class="page-link"
-												th:href="@{/menus/index(page=${list_menus.number + 1})}"
+												th:href="@{/comidas/index(page=${list_comidas.number + 1})}"
 												aria-label="Next" title="Next Page" data-toggle="tooltip"
-												th:disabled="${list_menus.number + 1 eq list_menus.totalPages}">
+												th:disabled="${list_comidas.number + 1 eq list_comidas.totalPages}">
 													<span aria-hidden="true">&raquo;</span>
 											</a>
 											</li>
