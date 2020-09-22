@@ -94,6 +94,8 @@ public class PedidosController {
 		
 		pedidosService.guardar(pedidoDB);
 		
+		carrcll.limpiarCarrito(request, attributes);
+		
 		attributes.addAttribute("msg", "Su pedido fue agregado");
 		return "redirect:/pedidos/index";
 	}
